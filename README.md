@@ -20,18 +20,15 @@ apt-get install -y kubelet kubeadm kubectl kubernetes-cni
 
 **_And for the master after this all_**
 # Initialize Kubernetes Master
-sudo kubeadm init
+sudo kubeadm init && \
 # Set Up Kubeconfig for Current User
-mkdir -p $HOME/.kube
-cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-sudo chown $(id -u):$(id -g) $HOME/.kube/config
-# Apply Flannel Network Overlay
-kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
-# Download Flannel RBAC Configuration
-wget https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/k8s-old-manifests/kube-flannel-rbac.yml
-kubectl apply -f kube-flannel-rbac.yml
+mkdir -p $HOME/.kube && \
+cp -i /etc/kubernetes/admin.conf $HOME/.kube/config && \
+sudo chown $(id -u):$(id -g) $HOME/.kube/config && \
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml && \
+wget https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/k8s-old-manifests/kube-flannel-rbac.yml && \
+kubectl apply -f kube-flannel-rbac.yml 
 # There will me a message like this in while commanding **sudo kubeadm init** copy this and pste in Slave i.e., 
 ( root@ip-111-11-11-111:/home/ubuntu# kubeadm join 222.22.22.22:6443 --token 6nyc... --discovery-token-ca-cert-hash sha256:a7616c9...  )
-# Verify Node Joining
-kubectl get nodes
+
 ------------------------------------------------------------------------------------------------------------------------
