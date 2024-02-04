@@ -1,7 +1,7 @@
 # K8s-Making
 
 ------------------------------------------------------------------------------------------------------------
-**_Common for Master and Slave in Ubuntu_**
+# Common for Master and Slave in Ubuntu
 # Switch to root user
 sudo su
 # Update Package Repositories and Install Dependencies
@@ -18,7 +18,7 @@ apt-get update
 # Install Kubernetes Components
 apt-get install -y kubelet kubeadm kubectl kubernetes-cni
 
-**_And for the master after this all_**
+# And For The Master Continue here
 # Initialize Kubernetes Master
 sudo kubeadm init
 # Set Up Kubeconfig for Current User
